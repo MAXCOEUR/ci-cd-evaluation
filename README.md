@@ -108,8 +108,8 @@ _Légende : Logs clairs, erreurs commentées, interventions rapides possibles_
 | ![Git commits](images/commit.png) | Historique des commits sur `main` et `develop` |
 | ![Tag Git](images/tags.png) | Tag Git utilisé pour release |
 | ![Monitoring logs](images/prometheus.png) | Logs/Monitoring de production |
-| ![Snapshot](images/snapshot-execution.png) | Snapshot déclenché après déploiement |
-| ![Rollback](images/rollback-restauration.png) | Capture après rollback (restauration réussie) |
+| ![Snapshot](images/snapshot.png) | Snapshot déclenché après déploiement |
+| ![Rollback](images/rollback.png) | Capture après rollback (restauration réussie) |
 
 ## 📚 H. Procédures documentées
 
