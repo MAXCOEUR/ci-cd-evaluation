@@ -1,0 +1,22 @@
+name: Rollback Snapshot
+
+on:
+  workflow_dispatch:
+    inputs:
+      snapshot_file:
+        description: 'Nom du fichier snapshot à restaurer (ex: iot_snapshot_20250610_110000.db)'
+        required: true
+        type: string
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Restore snapshot
+      run: |
+        chmod +x ./rollback.sh
+        ./rollback.sh ${{ github.event.inputs.snapshot_file }}
