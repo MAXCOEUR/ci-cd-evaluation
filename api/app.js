@@ -9,7 +9,12 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const infosRouter = require('./routes/infos');
 const packageJson = require('../package.json');
 
+const client = require('prom-client');
+
 const app = express();
+
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics();
 
 const options = {
   definition: {
@@ -38,6 +43,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/iot', infosRouter);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// ** Ajout de la route /metrics **
+app.get('/metrics', async (req, res) => {
+  try {
+    res.set('Content-Type', client.register.contentType);
+    const metrics = await client.register.metrics();
+    res.end(metrics);
+  } catch (ex) {
+    res.status(500).end(ex);
+  }
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -45,11 +61,9 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
