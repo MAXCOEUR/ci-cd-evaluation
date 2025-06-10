@@ -78,7 +78,7 @@ Nous utilisons le versionnement sémantique (standard-version) :
 ### 🔒 Méthode
 - Secrets stockés dans **GitHub Secrets**
 - Accès via `${{ secrets.MY_SECRET }}` dans les fichiers YAML 
-  ![GitHub Secrets](images/Secrets.png)
+  ![GitHub Secrets](images/secrets.png)
 
 ### ✅ Bonnes pratiques
 - Aucun secret dans le code source
