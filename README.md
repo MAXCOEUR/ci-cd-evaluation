@@ -123,11 +123,6 @@ git push origin --tags
 # GitHub déclenche automatiquement le pipeline de release
 ```
 
-### 🧯 Procédure de rollback
-1. Identifier le dernier tag stable (`v1.2.1`)
-2. Lancer manuellement le job `rollback` dans GitHub Actions
-3. Le script Ansible restaure la base depuis le dernier snapshot
-
 ### 🧭 Plan de versionnage
 - Une version par sprint
 - Tag à chaque release validée
